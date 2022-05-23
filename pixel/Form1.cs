@@ -18,13 +18,13 @@ namespace pixel
             pixelVector = new Bitmap(520, 260);
             panel1.BackgroundImage = pixelVector;
             Color color0 = Color.Blue;
-            
+
             Point point = panel1.PointToClient(Cursor.Position);
             int x = point.X;
             int y = point.Y;
             pixelVector.SetPixel(x, y, color0);
             panel1.Image = pixelVector;
-            
+
         }
 
 
@@ -44,10 +44,10 @@ namespace pixel
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
             Segmento seg = new Segmento(-10, 0, 10, 0); seg.Color = Color.Red;
             lienzo = seg.encender(lienzo);
-            seg = new Segmento(0,-5.97, 0,5.97);
+            seg = new Segmento(0, -5.97, 0, 5.97);
             lienzo = seg.encender(lienzo);
             panel1.Image = lienzo;
         }
@@ -57,7 +57,7 @@ namespace pixel
             Segmento seg = new Segmento(7, 1.5, -7, 5);
             seg.Color = Color.Blue;
             lienzo = seg.encender(lienzo);
-            seg.Xo = 7; seg.Yo = 1.5;seg.Xf = -7; seg.Yf = -4;
+            seg.Xo = 7; seg.Yo = 1.5; seg.Xf = -7; seg.Yf = -4;
             //seg = new Segmento(7, 1.5, -7, -4);
             lienzo = seg.encender(lienzo);
             panel1.Image = lienzo;
@@ -66,26 +66,161 @@ namespace pixel
         private void button4_Click(object sender, EventArgs e)
         {
             Circunferencia c = new Circunferencia(1.3, 7, 1.5); c.Color = Color.Black;
-            lienzo=c.encenderC(lienzo);
+            lienzo = c.encenderC(lienzo);
             c.Rad = 2.5; c.X0 = -3.5; c.Y0 = 1;
             lienzo = c.encenderC(lienzo);
-            panel1.Image=lienzo;
+            panel1.Image = lienzo;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             Lazo l = new Lazo(0.4, -3.5, 2); l.Color = Color.DarkGreen;
-            lienzo=l.encender(lienzo);
+            lienzo = l.encender(lienzo);
             l.Rad = 1; l.X0 = 3; l.Y0 = -3;
-            lienzo=l.encender(lienzo); 
+            lienzo = l.encender(lienzo);
             panel1.Image = lienzo;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             Raiz r = new Raiz(0.8, 1.5, 4); r.Color = Color.Pink;
-            lienzo=r.encenderR(lienzo);
+            lienzo = r.encenderR(lienzo);
             panel1.Image = lienzo;
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            espiral(2, 2, 2, 2, 5, 15, Color.Green);
+            espiral(3, 4, 0, 0.5, 20, 20, Color.Black);
+            espiral(4, 0, 1, 0.8, 15, 20, Color.Blue);
+
+        }
+
+
+        //proceso de espiral parametrizado
+        public void espiral(double x, double y, double z, double radio, double elong, double vueltas, Color c)
+        {
+            double h = 0;
+            vector3D V3D = new vector3D(0, 0, 0); V3D.Color = c;
+            do
+            { //ubicar al objeto en el espacio = [num] traslacion
+                //radio = +[num] 
+                //h/[num] mide la elongación del resorte mientras grande el numero mas compacto
+                //h<= [num] mide cuentas vueltas da el espiral, mas vueltas aumentar num
+                V3D.X = x + radio * Math.Cos(h);
+                V3D.Y = y + radio * Math.Sin(h);
+                V3D.Z = z + (h / elong);
+                lienzo = V3D.encender3d(lienzo);
+                h += 0.002;
+            } while (h <= vueltas);
+            panel1.Image = lienzo;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Segmento3D s3d = new Segmento3D();
+            s3d.Color = Color.Red;
+            s3d.Zf = 5;
+            lienzo = s3d.encenderSeg3D(lienzo);
+            s3d.Zf = 0; s3d.Yf = 5;
+            lienzo = s3d.encenderSeg3D(lienzo);
+            s3d.Yf = 0; s3d.Xf = 8;
+            lienzo = s3d.encenderSeg3D(lienzo);
+            s3d = new Segmento3D(0, 0, 5, 8, 0, 5);
+            lienzo = s3d.encenderSeg3D(lienzo);
+            s3d = new Segmento3D(8, 0, 5, 8, 0, 0);
+            lienzo = s3d.encenderSeg3D(lienzo);
+            s3d = new Segmento3D(8, 0, 0, 8, 5, 0);
+            lienzo = s3d.encenderSeg3D(lienzo);
+            s3d = new Segmento3D(8, 5, 0, 0, 5, 0);
+            lienzo = s3d.encenderSeg3D(lienzo);
+            s3d = new Segmento3D(0, 5, 0, 0, 5, 5);
+            lienzo = s3d.encenderSeg3D(lienzo);
+            s3d = new Segmento3D(0, 5, 5, 0, 0, 5);
+            lienzo = s3d.encenderSeg3D(lienzo);
+            //mostrar segmentos
+            panel1.Image = lienzo;
+        }
+
+        public void lagrange(double x)
+        {
+            List<double>[] puntos = new List<double>[2];
+            puntos[0] = new List<double> { 0, 255 };
+            puntos[1] = new List<double> { 700, 0 };
+
+            double s = 0, p = 1;
+            int n = puntos.Length;
+
+            for(int i = 0; i < n; i++)
+            {
+                p = 1;
+                for (int j = 0; j < n; j++)
+                {
+                    if (i != j)
+                    {
+                        p = p * (x - puntos[1][0]);
+                    }
+                }
+            }
+           
+        }
+
+        
+        
+
+        //datos lagrange
+        //int[] b = { 0, 0 };
+        //lagrange
+        //public double lagrange(double x)
+        //{
+        //    double s = 0, p = 1;
+        //    int i = 0, j = 0;
+        //    int n = 4;//tamaño del vecto
+
+        //    for (i = 0; i < n; i++)
+        //    {
+        //        p = 1;
+        //        for (int j = 0; j < n; j++)
+        //        {
+        //            if (i != j)
+        //            {
+        //                p = p * (x - xj) / (xi - xj);
+        //            }
+        //        }
+        //        s += (yi * p);
+        //    }
+
+
+        //    return s;
+        //}
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 700; i++)
+            {
+                for(int j = 0; j < 420; j++)
+                {
+
+                    int b = (int)((255) * ((i - 700) / -700));
+
+                    int g = (int)(255 * (j / 700));
+
+                    lienzo.SetPixel(i, j, Color.FromArgb(0, g, b));
+
+                    //if (i > 350)
+                    //{
+                    //    lienzo.SetPixel(i, j, Color.Green);
+                    //}
+                    //else
+                    //{
+                    //    lienzo.SetPixel(i, j, Color.FromArgb(0,0,255));
+                    //}
+
+                }
+            }
+            panel1.Image = lienzo;
+        }
+        
+            
+        }
     }
-}

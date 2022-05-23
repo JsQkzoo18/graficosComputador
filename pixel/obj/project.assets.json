@@ -8,24 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\fda28\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\fda28\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fda28\\source\\repos\\pixel\\pixel\\pixel.csproj",
+      "projectUniqueName": "C:\\Users\\fda28\\Source\\Repos\\graficosComputador\\pixel\\pixel.csproj",
       "projectName": "pixel",
-      "projectPath": "C:\\Users\\fda28\\source\\repos\\pixel\\pixel\\pixel.csproj",
+      "projectPath": "C:\\Users\\fda28\\Source\\Repos\\graficosComputador\\pixel\\pixel.csproj",
       "packagesPath": "C:\\Users\\fda28\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fda28\\source\\repos\\pixel\\pixel\\obj\\",
+      "outputPath": "C:\\Users\\fda28\\Source\\Repos\\graficosComputador\\pixel\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\fda28\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -68,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
