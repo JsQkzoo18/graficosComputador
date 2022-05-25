@@ -281,5 +281,17 @@ namespace pixel
         {
 
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (panel1.Image != null)
+            {
+                //panel1.Image.Dispose();
+                panel1.Image = null;
+                panel1.InitialImage = null;
+            }
+
+          
+        }
     }
     }
