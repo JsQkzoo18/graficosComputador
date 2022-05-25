@@ -47,9 +47,11 @@ namespace pixel
             pintura.SetPixel(cordenadas[0], cordenadas[1], color);
             return pintura;
         }
-        public void apagar()
+        public Bitmap apagar(Bitmap pintura)
         {
-
+            int[] cordenadas = pantalla(X0, Y0);
+            pintura.SetPixel(cordenadas[0], cordenadas[1], Color.White);
+            return pintura;
         }
 
 

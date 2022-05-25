@@ -37,6 +37,12 @@ namespace pixel
             return encender(pintura);
         }
 
+        public Bitmap apagar3d(Bitmap pintura)
+        {
+            axonometria();
+            return apagar(pintura);
+        }
+
 
 
     }

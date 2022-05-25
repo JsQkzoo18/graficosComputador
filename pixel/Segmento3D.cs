@@ -38,7 +38,7 @@ namespace pixel
         public double Zo { get => zo; set => zo = value; }
 
         
-        public Bitmap encenderSeg3D(Bitmap lienzo)
+        public Bitmap encenderSeg3D(Bitmap lienzo, bool state)
         {
             double t = 0, dt = 0.001;
             do
@@ -46,7 +46,10 @@ namespace pixel
                 base.X = (xo * (1 - t) + (xf * t));
                 base.Y = (yo * (1 - t) + (yf * t));
                 base.Z = (zo * (1 - t) + (zf * t));
-                lienzo=encender3d(lienzo);
+                if(state)
+                    lienzo = encender3d(lienzo);
+                else
+                    lienzo = apagar3d(lienzo);
                 t += dt;
 
             } while (t <= 1);

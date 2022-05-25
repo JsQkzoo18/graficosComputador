@@ -28,7 +28,7 @@ namespace pixel
         public double Yf { get => yf; set => yf = value; }
 
         //metodos 
-        public Bitmap encender(Bitmap lienzo)
+        public Bitmap encender(Bitmap lienzo,bool state)
         {
 
             double t = 0;
@@ -38,7 +38,15 @@ namespace pixel
             {
                 base.X0 = (xo * (1 - t) + (xf * t));
                 base.Y0 = (yo * (1 - t) + (yf * t));
-                lienzo = base.encender(lienzo);
+                if (state)
+                {
+                    lienzo = base.encender(lienzo);
+                }
+                else
+                {
+                    lienzo = base.apagar(lienzo);
+                }
+                
                 t += dt;
             } while (t <= 1);
             t = 0;

@@ -12,7 +12,7 @@ namespace pixel
         {
         }
 
-        public Bitmap encenderR(Bitmap lienzo)
+        public Bitmap encenderR(Bitmap lienzo,bool state)
         {
             double t = 0, dt = 0.001;
             do
@@ -21,7 +21,14 @@ namespace pixel
                 double rx0= ((base.X0) + (base.Rad * (Math.Sin(2*t))));
                 double ry0= ((base.Y0) + (base.Rad * (Math.Cos(3*t))));
                 Vector v= new Vector(rx0, ry0); v.Color = base.Color;
-                lienzo = v.encender(lienzo);
+                if (state)
+                {
+                    lienzo = v.encender(lienzo);
+                }
+                else
+                {
+                    lienzo = v.apagar(lienzo);
+                }
                 t += dt;
             } while (t <= (2 * Math.PI));
             t = 0;

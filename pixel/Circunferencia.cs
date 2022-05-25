@@ -28,14 +28,21 @@ namespace pixel
         public double X0 { get => x0; set { x0 = value;base.X0 = value; } }
         public double Y0 { get => y0; set => y0 = value; }
 
-        public virtual Bitmap encenderC(Bitmap lienzo)
+        public virtual Bitmap encenderC(Bitmap lienzo, bool state)
         {
             do
             {
                 
                 base.X0 = ((x0) + (rad * (Math.Cos(t))));
                 base.Y0 = ((y0) + (rad * (Math.Sin(t))));
-                lienzo = base.encender(lienzo);
+                if (state)
+                {
+                    lienzo = base.encender(lienzo);
+                }
+                else
+                {
+                    lienzo = base.apagar(lienzo);
+                }
                 t += dt;
             }while(t<=(2*Math.PI));
             t = 0;            
