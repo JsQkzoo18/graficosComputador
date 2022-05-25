@@ -59,8 +59,11 @@ namespace pixel
 
             panel1.Image = v.encender(pintura);
             banderas[0] = !banderas[0];
+            button1.Text = "Pixels: " + banderas[3].ToString();
+
+
         }
-        
+
         private void button2_Click(object sender, EventArgs e)
         {
             
@@ -70,6 +73,9 @@ namespace pixel
             lienzo = seg.encender(lienzo,banderas[1]);
             panel1.Image = lienzo;
             banderas[1] = !banderas[1];
+            button2.Text = "Ejes2D: " + banderas[1].ToString();
+
+
         }
 
 
@@ -83,6 +89,8 @@ namespace pixel
             lienzo = seg.encender(lienzo, banderas[2]);
             panel1.Image = lienzo;
             banderas[2] = !banderas[2];
+            button3.Text = "Segmento: " + banderas[2].ToString();
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -93,6 +101,7 @@ namespace pixel
             lienzo = c.encenderC(lienzo,banderas[3]);
             panel1.Image = lienzo;
             banderas[3] = !banderas[3];
+            button4.Text = "Circunrencia: " + banderas[3].ToString();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -103,6 +112,8 @@ namespace pixel
             lienzo = l.encender(lienzo,banderas[4]);
             panel1.Image = lienzo;
             banderas[4] = !banderas[4];
+            button5.Text = "Lazo: " + banderas[4].ToString();
+
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -111,6 +122,8 @@ namespace pixel
             lienzo = r.encenderR(lienzo,banderas[5]);
             panel1.Image = lienzo;
             banderas[5] = !banderas[5];
+            button6.Text = "Raiz: " + banderas[5].ToString();
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -119,6 +132,8 @@ namespace pixel
             espiral(3, 4, 0, 0.5, 20, 20, Color.Black);
             espiral(4, 0, 1, 0.8, 15, 20, Color.Blue);
             banderas[6] = !banderas[6];
+            button7.Text = "Resorte: " + banderas[6].ToString();
+
         }
 
 
@@ -170,6 +185,8 @@ namespace pixel
             //mostrar segmentos
             panel1.Image = lienzo;
             banderas[7] = !banderas[7];
+            button8.Text = "Base3D: " + banderas[7].ToString();
+
         }
 
         public void lagrange(double x)
@@ -256,8 +273,13 @@ namespace pixel
             }
             panel1.Image = lienzo;
             banderas[8]=!banderas[8];
+            button9.Text = "Colores: " + banderas[8].ToString();
+
         }
-        
-            
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
+    }
     }
